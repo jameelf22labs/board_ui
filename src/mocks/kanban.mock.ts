@@ -17,17 +17,12 @@ export class KanbanMock {
     return this.mock[status];
   }
 
-  async searchByTitle(
-    query: string
-  ): Promise<{ status: BoardStatus; task: Task }[]> {
-    const results: { status: BoardStatus; task: Task }[] = [];
-
-    for (const status of Object.keys(this.mock) as BoardStatus[]) {
-      const tasks = this.mock[status];
-      for (const task of tasks) {
-        if (task.title.toLowerCase().includes(query.toLowerCase())) {
-          results.push({ status, task });
-        }
+  async searchByTitle(query: string, status: BoardStatus): Promise<Task[]> {
+    const results: Task[] = [];
+    const tasks = this.mock[status];
+    for (const task of tasks) {
+      if (task.title.toLowerCase().includes(query.toLowerCase())) {
+        results.push(task);
       }
     }
 

@@ -48,15 +48,24 @@ const TaskCard = ({ task }: { task: Task }): JSX.Element => {
 const StatusCard = ({ status }: StatusCardProps): JSX.Element => {
   const mock = React.useMemo(() => new KanbanMock(kanbanBoardMock), []);
   const [allTask, setAllTask] = React.useState<Task[]>([]);
+  const [query, setQuery] = React.useState<string>("");
+  useEventEmitter<string>(EventNames.SearchTitle, (query) => {
+    setQuery(query);
+  });
 
   React.useEffect(() => {
     const fetchAllTasks = async () => {
+      if (query.length > 0) {
+        const allTasks = await mock.searchByTitle(query, status);
+        setAllTask(allTasks);
+        return;
+      }
       const allTasks = await mock.get(status);
       setAllTask(allTasks);
     };
 
     fetchAllTasks();
-  }, [mock]);
+  }, [mock , query]);
 
   return (
     <div>

@@ -1,9 +1,13 @@
 import { useCallback, useEffect } from "react";
 import globalEventEmitter from "../core/events/event-emitter";
+import { type EventNameTypes } from "../core/events/event.constant";
 
 type Listener<T> = (payload: T) => void;
 
-const useEventEmitter = <T>(eventName: string, listener?: Listener<T>) => {
+const useEventEmitter = <T>(
+  eventName: EventNameTypes,
+  listener?: Listener<T>
+) => {
   useEffect(() => {
     if (!listener) return;
     const wrappedListener = (event: Event) => {
