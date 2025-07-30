@@ -5,8 +5,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import OctomLogo from "../../assets/logo.png";
 import NotificationSVG from "../../svg/NotificationSVG";
 import ProfileSVG from "../../svg/ProfileSVG";
+import useEventEmitter from "../../hooks/useEventEmitter";
+import { EventNames } from "../../core/events/event.constant";
 
 const ProfileLayout = (): JSX.Element => {
+  const publish = useEventEmitter<String>(EventNames.SearchTitle);
   return (
     <div className={Style.profileWrapper}>
       <div className={Style.logo}>
@@ -18,6 +21,9 @@ const ProfileLayout = (): JSX.Element => {
           variant="outlined"
           placeholder="Search anything..."
           fullWidth
+          onChange={(e) => {
+            publish(e.target.value);
+          }}
           size="small"
           InputProps={{
             endAdornment: (
@@ -54,8 +60,14 @@ const ProfileLayout = (): JSX.Element => {
         />
       </div>
       <div className={Style.profileInfo}>
-        <div> <NotificationSVG /> </div>
-        <div> <ProfileSVG /> </div>
+        <div>
+          {" "}
+          <NotificationSVG />{" "}
+        </div>
+        <div>
+          {" "}
+          <ProfileSVG />{" "}
+        </div>
       </div>
     </div>
   );
