@@ -7,9 +7,15 @@ import NotificationSVG from "../../svg/NotificationSVG";
 import ProfileSVG from "../../svg/ProfileSVG";
 import useEventEmitter from "../../hooks/useEventEmitter";
 import { EventNames } from "../../core/events/event.constant";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { useTheme } from "../../context/ThemeContext";
+
 
 const ProfileLayout = (): JSX.Element => {
   const publish = useEventEmitter<String>(EventNames.SearchTitle);
+  const { toggleTheme, theme } = useTheme();
+
   return (
     <div className={Style.profileWrapper}>
       <div className={Style.logo}>
@@ -60,13 +66,14 @@ const ProfileLayout = (): JSX.Element => {
         />
       </div>
       <div className={Style.profileInfo}>
-        <div>
-          {" "}
-          <NotificationSVG />{" "}
+        <div onClick={toggleTheme} style={{ cursor: "pointer" }}>
+          {theme === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
         </div>
         <div>
-          {" "}
-          <ProfileSVG />{" "}
+          <NotificationSVG />
+        </div>
+        <div>
+          <ProfileSVG />
         </div>
       </div>
     </div>
