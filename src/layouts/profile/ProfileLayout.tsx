@@ -1,10 +1,10 @@
 import type { JSX } from "react";
 import Style from "./Profile.module.css";
-import { Avatar, InputAdornment, TextField } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-
-import { MdNotificationsNone } from "react-icons/md";
 import OctomLogo from "../../assets/logo.png";
+import NotificationSVG from "../../svg/NotificationSVG";
+import ProfileSVG from "../../svg/ProfileSVG";
 
 const ProfileLayout = (): JSX.Element => {
   return (
@@ -54,14 +54,8 @@ const ProfileLayout = (): JSX.Element => {
         />
       </div>
       <div className={Style.profileInfo}>
-        <div>
-          <MdNotificationsNone
-            style={{ color: "#5250f9", width: 40, height: 40 }}
-          />
-        </div>
-        <div>
-          <Avatar/>
-        </div>
+        <div> <NotificationSVG /> </div>
+        <div> <ProfileSVG /> </div>
       </div>
     </div>
   );
