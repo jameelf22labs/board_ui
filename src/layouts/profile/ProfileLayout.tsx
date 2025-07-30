@@ -1,0 +1,70 @@
+import type { JSX } from "react";
+import Style from "./Profile.module.css";
+import { Avatar, InputAdornment, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+
+import { MdNotificationsNone } from "react-icons/md";
+import OctomLogo from "../../assets/logo.png";
+
+const ProfileLayout = (): JSX.Element => {
+  return (
+    <div className={Style.profileWrapper}>
+      <div className={Style.logo}>
+        {" "}
+        <img src={OctomLogo} alt="Octum Logo" width={84} height={84} />{" "}
+      </div>
+      <div className={Style.inputSearch}>
+        <TextField
+          variant="outlined"
+          placeholder="Search anything..."
+          fullWidth
+          size="small"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <SearchIcon style={{ color: "#7C8DB5" }} />
+              </InputAdornment>
+            ),
+            style: {
+              borderRadius: "10px",
+              backgroundColor: "#F3F7FA",
+              height: "44px",
+            },
+          }}
+          sx={{
+            width: "100%",
+            maxWidth: 350,
+            minWidth: 120,
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#D0D5DD",
+              },
+              "&:hover fieldset": {
+                borderColor: "#A0AEC0",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#2B6CB0",
+              },
+            },
+            input: {
+              padding: "10px",
+              fontSize: "14px",
+            },
+          }}
+        />
+      </div>
+      <div className={Style.profileInfo}>
+        <div>
+          <MdNotificationsNone
+            style={{ color: "#5250f9", width: 40, height: 40 }}
+          />
+        </div>
+        <div>
+          <Avatar/>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProfileLayout;
