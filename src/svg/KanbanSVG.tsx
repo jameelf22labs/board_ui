@@ -3,19 +3,20 @@ export default function KanbanSVG() {
     <svg
       width="34"
       height="34"
-      viewBox="0 0 24 24"
+      viewBox="0 0 64 64"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <rect width="64" height="64" rx="16" fill="#4F46E5" />
       <path
-        d="M4 6C4 5.44772 4.44772 5 5 5H11C11.5523 5 12 5.44772 12 6V18C12 18.5523 11.5523 19 11 19H5C4.44772 19 4 18.5523 4 18V6Z"
+        d="M20 22C20 21.4477 20.4477 21 21 21H31C31.5523 21 32 21.4477 32 22V42C32 42.5523 31.5523 43 31 43H21C20.4477 43 20 42.5523 20 42V22Z"
         stroke="white"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
-        d="M20 6C20 5.44772 19.5523 5 19 5H13C12.4477 5 12 5.44772 12 6V18C12 18.5523 12.4477 19 13 19H19C19.5523 19 20 18.5523 20 18V6Z"
+        d="M44 22C44 21.4477 43.5523 21 43 21H33C32.4477 21 32 21.4477 32 22V42C32 42.5523 32.4477 43 33 43H43C43.5523 43 44 42.5523 44 42V22Z"
         stroke="white"
         stroke-width="2"
         stroke-linecap="round"
