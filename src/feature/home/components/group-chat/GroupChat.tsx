@@ -17,6 +17,8 @@ import member4 from "../../../../assets/member3.jpg";
 import member5 from "../../../../assets/member4.jpg";
 import member6 from "../../../../assets/memebr4.jpg";
 import { MdKeyboardVoice } from "react-icons/md";
+import { MockFactory } from "../../../../mocks/mock.factory";
+import type { ChatMock } from "../../../../mocks/chat.mock";
 
 const Message = ({ message }: { message: Message }): JSX.Element => {
   const { theme } = useTheme();
@@ -47,19 +49,44 @@ const Message = ({ message }: { message: Message }): JSX.Element => {
 
 const GroupChat = (): JSX.Element => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+  const chatMockInstance: ChatMock = React.useMemo(
+    () => MockFactory.createChat(),
+    []
+  );
   const { theme } = useTheme();
   const isMobile = useMediaQuery("(max-width:600px)");
   const chatListRef = React.useRef<HTMLDivElement | null>(null);
+  const [messages, setMessages] = React.useState<Array<Message>>([]);
+  const [messgae, setMessage] = React.useState<string>("");
+  const [isMessageAdded, setIsMessageAdded] = React.useState<boolean>(false);
 
   useEventEmitter<boolean>(EventNames.OpenGroupChat, (isOpen) => {
     setIsDrawerOpen(isOpen);
   });
 
   React.useEffect(() => {
+    setMessages(chatMockInstance.getAllChat());
+  }, [isMessageAdded]);
+
+  React.useEffect(() => {
     if (chatListRef.current) {
       chatListRef.current.scrollTop = chatListRef.current.scrollHeight;
     }
-  }, [groupChats]);
+  }, [messages]);
+
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && messgae.trim()) {
+      e.preventDefault();
+      chatMockInstance.addMessage({
+        message: messgae,
+        user: "me",
+        sendedAt: new Date().toISOString(),
+        avatar: "",
+      });
+      setIsMessageAdded(!isMessageAdded);
+      setMessage("");
+    }
+  };
 
   return (
     <div className={Style.groupChat}>
@@ -120,7 +147,7 @@ const GroupChat = (): JSX.Element => {
             </h6>
 
             <div className={Style.chatList} ref={chatListRef}>
-              {groupChats.map((chat, index) => {
+              {messages.map((chat, index) => {
                 const isMe = chat.user === "me";
                 return (
                   <div
@@ -145,6 +172,8 @@ const GroupChat = (): JSX.Element => {
                   style={{
                     backgroundColor: theme === "light" ? "#F3F5F7" : "#282932",
                   }}
+                  onKeyDown={handleEnter}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
               </div>
 

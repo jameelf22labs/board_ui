@@ -11,6 +11,7 @@ import { getRandomColor } from "../../../../utils/common.utils";
 import useEventEmitter from "../../../../hooks/useEventEmitter";
 import { EventNames } from "../../../../core/events/event.constant";
 import { useTheme } from "../../../../context/ThemeContext";
+import { MockFactory } from "../../../../mocks/mock.factory";
 
 type StatusCardProps = {
   status: BoardStatus;
@@ -63,7 +64,7 @@ const TaskCard = ({ task }: { task: Task }): JSX.Element => {
 };
 
 const StatusCard = ({ status }: StatusCardProps): JSX.Element => {
-  const mock = React.useMemo(() => new KanbanMock(kanbanBoardMock), []);
+  const mock = React.useMemo(() => MockFactory.createKanban(), []);
   const [allTask, setAllTask] = React.useState<Task[]>([]);
   const [query, setQuery] = React.useState<string>("");
   const { theme } = useTheme();
@@ -108,7 +109,7 @@ const StatusCard = ({ status }: StatusCardProps): JSX.Element => {
 };
 
 const KanbanBoard = (): JSX.Element => {
-  const mock = React.useMemo(() => new KanbanMock(kanbanBoardMock), []);
+  const mock = React.useMemo(() => MockFactory.createKanban(), []);
   const [allStatus, setAllStatus] = React.useState<BoardStatus[]>([]);
 
   React.useEffect(() => {

@@ -3,29 +3,28 @@ import type { BoardTask, Task } from "./types";
 export type BoardStatus = keyof BoardTask;
 
 export class KanbanMock {
-  private mock: BoardTask;
+  private static instance: KanbanMock;
+  private constructor(private readonly mock: BoardTask) {}
 
-  constructor(mock: BoardTask) {
-    this.mock = mock;
-  }
-
-  async getAllStatus(): Promise<BoardStatus[]> {
-    return Object.keys(this.mock) as BoardStatus[];
-  }
-
-  async get(status: BoardStatus): Promise<Task[]> {
-    return this.mock[status];
-  }
-
-  async searchByTitle(query: string, status: BoardStatus): Promise<Task[]> {
-    const results: Task[] = [];
-    const tasks = this.mock[status];
-    for (const task of tasks) {
-      if (task.title.toLowerCase().includes(query.toLowerCase())) {
-        results.push(task);
-      }
+  static getInstance(mockData: BoardTask): KanbanMock {
+    if (!KanbanMock.instance) {
+      KanbanMock.instance = new KanbanMock(mockData);
     }
+    return KanbanMock.instance;
+  }
 
-    return results;
+  getAllStatus(): Promise<BoardStatus[]> {
+    return Promise.resolve(Object.keys(this.mock) as BoardStatus[]);
+  }
+
+  get(status: BoardStatus): Promise<Task[]> {
+    return Promise.resolve(this.mock[status]);
+  }
+
+  searchByTitle(query: string, status: BoardStatus): Promise<Task[]> {
+    const results = this.mock[status].filter((task) =>
+      task.title.toLowerCase().includes(query.toLowerCase())
+    );
+    return Promise.resolve(results);
   }
 }
