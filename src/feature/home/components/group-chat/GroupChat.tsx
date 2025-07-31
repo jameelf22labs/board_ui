@@ -3,9 +3,12 @@ import Style from "./GroupChat.module.css";
 import useEventEmitter from "../../../../hooks/useEventEmitter";
 import { EventNames } from "../../../../core/events/event.constant";
 import React from "react";
-import { Avatar, AvatarGroup, Drawer, IconButton } from "@mui/material";
+import { Avatar, Drawer, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "../../../../context/ThemeContext";
+import { MoreHoriz } from "@mui/icons-material";
+import type { Message } from "../../../../mocks/types";
+import { groupChats } from "../../../../mocks/chat.mock.data";
 
 import member1 from "../../../../assets/member.jpg";
 import member2 from "../../../../assets/member1.jpg";
@@ -13,6 +16,29 @@ import member3 from "../../../../assets/member2.jpg";
 import member4 from "../../../../assets/member3.jpg";
 import member5 from "../../../../assets/member4.jpg";
 import member6 from "../../../../assets/memebr4.jpg";
+import { MdKeyboardVoice } from "react-icons/md";
+
+const Message = ({ message }: { message: Message }): JSX.Element => {
+  const isMe = message.user === "me";
+  return (
+    <div
+      className={Style.message}
+      style={{
+        display: "flex",
+        gap: 10,
+        flexDirection: isMe ? "row-reverse" : "row",
+      }}
+    >
+      <div className={Style.avatar}>
+        <Avatar src={message.avatar} alt={message.user} />
+      </div>
+      <div className={Style.messageContent}>
+        <h6> {message.message} </h6>
+        <h6>{message.sendedAt}</h6>
+      </div>
+    </div>
+  );
+};
 
 const GroupChat = (): JSX.Element => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
@@ -25,6 +51,7 @@ const GroupChat = (): JSX.Element => {
   return (
     <div className={Style.groupChat}>
       <Drawer
+        variant="persistent"
         anchor="right"
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
@@ -75,7 +102,38 @@ const GroupChat = (): JSX.Element => {
           </div>
 
           <div>
-            <h6 className={Style.member} style={{ marginTop : '20px' }}> Group Chat </h6>
+            <h6 className={Style.member} style={{ marginTop: "20px" }}>
+              Group Chat
+            </h6>
+
+            <div className={Style.chatList}>
+              {groupChats.map((chat, index) => {
+                const isMe = chat.user === "me";
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      justifyContent: isMe ? "flex-end" : "flex-start",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    <Message message={chat} />
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className={Style.sendMessageWrapper}>
+              <div className={Style.messageInputField}>
+                <input type="text" placeholder="Write here..." />
+              </div>
+
+              <div className={Style.options}>
+                <MdKeyboardVoice />
+                <MoreHoriz />
+              </div>
+            </div>
           </div>
         </div>
       </Drawer>

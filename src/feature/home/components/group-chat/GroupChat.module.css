@@ -33,3 +33,36 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+.chatList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+  height: 550px;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.sendMessageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.messageInputField input {
+  padding: 20px 30px 20px 30px;
+  border-radius: 10px;
+  background-color: #f3f5f7;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+
+.options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+}

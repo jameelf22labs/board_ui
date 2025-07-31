@@ -3,14 +3,14 @@
 :root {
   --bg-color: white;
   --text-color: black;
-  --side-bar-bg: #FBFAFF;
-  --kanban-bg: #F3F4F8;
+  --side-bar-bg: #fbfaff;
+  --kanban-bg: #f3f4f8;
 }
 
 [data-theme="dark"] {
   --bg-color: #121212;
   --text-color: #ffffff;
-  --side-bar-bg: #1E1F25;
+  --side-bar-bg: #1e1f25;
   --kanban-bg: #131517;
 }
 
@@ -32,4 +32,9 @@ body {
   overflow: hidden;
   background-color: var(--bg-color);
   color: var(--text-color);
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background-color: #f5f5f5;
 }
