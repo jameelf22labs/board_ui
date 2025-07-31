@@ -10,12 +10,14 @@ import type { Task } from "../../../../mocks/types";
 import { getRandomColor } from "../../../../utils/common.utils";
 import useEventEmitter from "../../../../hooks/useEventEmitter";
 import { EventNames } from "../../../../core/events/event.constant";
+import { useTheme } from "../../../../context/ThemeContext";
 
 type StatusCardProps = {
   status: BoardStatus;
 };
 
 const TaskCard = ({ task }: { task: Task }): JSX.Element => {
+  const { theme } = useTheme();
   return (
     <div className={Style.taskCard}>
       <h6
@@ -29,9 +31,21 @@ const TaskCard = ({ task }: { task: Task }): JSX.Element => {
           <img src={task.backgroundImage} alt="Banner" />
         )}
       </div>
-      <h6 className={Style.title}>{task.title}</h6>
-      <h6 className={Style.desc}>{task.description}</h6>
-      <h6 className={Style.issueDate}>{task.issueDate}</h6>
+      <h6
+        className={Style.title}
+        style={{ color: theme === "light" ? "#232360" : "#F6F6F6" }}
+      >
+        {task.title}
+      </h6>
+      <h6 className={Style.desc} style={{ color: "#768396" }}>
+        {task.description}
+      </h6>
+      <h6
+        className={Style.issueDate}
+        style={{ color: theme === "light" ? "#232360" : "#F6F6F6" }}
+      >
+        {task.issueDate}
+      </h6>
       <div className={Style.members}>
         <AvatarGroup spacing={24}>
           {task.members.map((user) => (
@@ -65,7 +79,7 @@ const StatusCard = ({ status }: StatusCardProps): JSX.Element => {
     };
 
     fetchAllTasks();
-  }, [mock , query]);
+  }, [mock, query]);
 
   return (
     <div>

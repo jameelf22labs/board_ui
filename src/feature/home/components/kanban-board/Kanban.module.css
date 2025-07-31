@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: var(--side-bar-bg);
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -78,7 +78,7 @@
 .taskCard {
   width: 333px;
   padding: 20px;
-  background-color: white;
+  background-color: var(--side-bar-bg);
 }
 
 .category {
@@ -124,7 +124,7 @@
 
 .members {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   margin-top: 10px;
 }
@@ -134,4 +134,18 @@
   font-size: 19px;
   color: #555;
   margin: 0;
+}
+
+@media (max-width: 550px) {
+  .statusCardWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    min-width: max-content;
+    flex-direction: column;
+  }
+  .header h6 {
+    font-weight: 500;
+    font-size: 20px;
+  }
 }

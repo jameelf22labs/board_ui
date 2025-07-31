@@ -11,15 +11,16 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { useTheme } from "../../context/ThemeContext";
 
-
 const ProfileLayout = (): JSX.Element => {
   const publish = useEventEmitter<String>(EventNames.SearchTitle);
   const { toggleTheme, theme } = useTheme();
 
   return (
-    <div className={Style.profileWrapper}>
+    <div
+      className={Style.profileWrapper}
+      style={{ backgroundColor: theme === "dark" ? "#1E1F25" : "#FFFFFF" }}
+    >
       <div className={Style.logo}>
-        {" "}
         <img src={OctomLogo} alt="Octum Logo" width={84} height={84} />{" "}
       </div>
       <div className={Style.inputSearch}>
@@ -39,8 +40,9 @@ const ProfileLayout = (): JSX.Element => {
             ),
             style: {
               borderRadius: "10px",
-              backgroundColor: "#F3F7FA",
+              backgroundColor: theme === "light" ? "#F3F7FA" : "#050505",
               height: "44px",
+              color: theme === "light" ? "#23235F" : "#9BABC5",
             },
           }}
           sx={{
@@ -49,13 +51,13 @@ const ProfileLayout = (): JSX.Element => {
             minWidth: 120,
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#D0D5DD",
+                borderColor: theme === "light" ? "#D0D5DD" : undefined,
               },
               "&:hover fieldset": {
-                borderColor: "#A0AEC0",
+                borderColor: theme === "light" ? "#A0AEC0" : undefined,
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#2B6CB0",
+                borderColor: theme === "light" ? "#2B6CB0" : undefined,
               },
             },
             input: {

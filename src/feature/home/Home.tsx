@@ -7,7 +7,9 @@ const Home = (): JSX.Element => {
   return (
     <div className={Style.homeRoot}>
       <ProfileLayout />
-      <div style={{ display: "flex",  width: "100%", height: "100%" }}>
+      <div
+        className={Style.contentWrapper}
+      >
         <Navbar />
         <KanbanBoard />
       </div>
