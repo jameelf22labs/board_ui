@@ -2,6 +2,7 @@ import type { JSX } from "react";
 import Style from "./Home.module.css";
 import { Navbar, ProfileLayout } from "../../layouts";
 import KanbanBoard from "./components/kanban-board/KanbanBoard";
+import GroupChat from "./components/group-chat/GroupChat";
 
 const Home = (): JSX.Element => {
   return (
@@ -11,6 +12,8 @@ const Home = (): JSX.Element => {
         <Navbar />
         <KanbanBoard />
       </div>
+
+      <GroupChat />
     </div>
   );
 };

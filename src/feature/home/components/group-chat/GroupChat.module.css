@@ -1,0 +1,35 @@
+.membersWrapper {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.member {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.member span {
+  color: #5051f9;
+}
+
+.viewAll {
+  font-weight: 700;
+  font-size: 16px;
+  color: #768396;
+}
+
+.avatarWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}

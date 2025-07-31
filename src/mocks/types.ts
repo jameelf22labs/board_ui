@@ -13,5 +13,11 @@ export interface BoardTask {
   progress: Array<Task>;
   complete: Array<Task>;
   review: Array<Task>;
-
 }
+
+export type Message = {
+  user: string;
+  message: string;
+  sendedAt: string;
+  avatar: string;
+};
