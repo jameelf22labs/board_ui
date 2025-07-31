@@ -149,8 +149,12 @@ const GroupChat = (): JSX.Element => {
               </div>
 
               <div className={Style.options}>
-                <MdKeyboardVoice />
-                <MoreHoriz />
+                <MdKeyboardVoice
+                  style={{ color: theme === "light" ? "#768396" : "#D1D1D1" }}
+                />
+                <MoreHoriz
+                  style={{ color: theme === "light" ? "#768396" : "#D1D1D1" }}
+                />
               </div>
             </div>
           </div>
