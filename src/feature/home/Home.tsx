@@ -7,9 +7,7 @@ const Home = (): JSX.Element => {
   return (
     <div className={Style.homeRoot}>
       <ProfileLayout />
-      <div
-        className={Style.contentWrapper}
-      >
+      <div className={Style.contentWrapper}>
         <Navbar />
         <KanbanBoard />
       </div>
