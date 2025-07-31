@@ -19,7 +19,10 @@ type StatusCardProps = {
 const TaskCard = ({ task }: { task: Task }): JSX.Element => {
   const { theme } = useTheme();
   return (
-    <div className={Style.taskCard}>
+    <div
+      className={Style.taskCard}
+      style={{ backgroundColor: theme === "light" ? "#FFFFFF" : "#1E1F25" }}
+    >
       <h6
         className={Style.category}
         style={{ backgroundColor: getRandomColor() }}
@@ -63,6 +66,7 @@ const StatusCard = ({ status }: StatusCardProps): JSX.Element => {
   const mock = React.useMemo(() => new KanbanMock(kanbanBoardMock), []);
   const [allTask, setAllTask] = React.useState<Task[]>([]);
   const [query, setQuery] = React.useState<string>("");
+  const { theme } = useTheme();
   useEventEmitter<string>(EventNames.SearchTitle, (query) => {
     setQuery(query);
   });
@@ -83,7 +87,10 @@ const StatusCard = ({ status }: StatusCardProps): JSX.Element => {
 
   return (
     <div>
-      <div className={Style.statusCard}>
+      <div
+        className={Style.statusCard}
+        style={{ backgroundColor: theme === "light" ? "#FFFFFF" : "#1E1F25" }}
+      >
         <h6>{status}</h6>
         <div className={Style.options}>
           <MoreHoriz style={{ width: 30, height: 30 }} />

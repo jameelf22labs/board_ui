@@ -187,6 +187,7 @@ const kanbanBoardMock: BoardTask = {
       members: ["Jaya"],
     },
   ],
+
 };
 
 export default kanbanBoardMock;

@@ -50,10 +50,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background-color: var(--side-bar-bg);
+  background-color: var(--bg-color);
   border-radius: 10px;
   flex-shrink: 0;
-  position: fixed;
   z-index: 10;
 }
 
@@ -70,7 +69,7 @@
 }
 
 .taskCardWrapper {
-  margin-top: 80px;
+  margin-top: 30px;
   width: 333px;
   display: flex;
   flex-direction: column;
@@ -80,7 +79,7 @@
 .taskCard {
   width: 333px;
   padding: 20px;
-  background-color: var(--side-bar-bg);
+  background-color: var(--bg-color);
 }
 
 .category {

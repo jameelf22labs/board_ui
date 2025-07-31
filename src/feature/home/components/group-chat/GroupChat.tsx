@@ -3,7 +3,7 @@ import Style from "./GroupChat.module.css";
 import useEventEmitter from "../../../../hooks/useEventEmitter";
 import { EventNames } from "../../../../core/events/event.constant";
 import React from "react";
-import { Avatar, Drawer, IconButton } from "@mui/material";
+import { Avatar, Drawer, IconButton, useMediaQuery } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "../../../../context/ThemeContext";
 import { MoreHoriz } from "@mui/icons-material";
@@ -19,6 +19,7 @@ import member6 from "../../../../assets/memebr4.jpg";
 import { MdKeyboardVoice } from "react-icons/md";
 
 const Message = ({ message }: { message: Message }): JSX.Element => {
+  const { theme } = useTheme();
   const isMe = message.user === "me";
   return (
     <div
@@ -32,9 +33,13 @@ const Message = ({ message }: { message: Message }): JSX.Element => {
       <div className={Style.avatar}>
         <Avatar src={message.avatar} alt={message.user} />
       </div>
-      <div className={Style.messageContent}>
+      <div
+        className={Style.messageContent}
+        style={{
+          backgroundColor: theme === "light" ? "#F3F5F7" : "#282932",
+        }}
+      >
         <h6> {message.message} </h6>
-        <h6>{message.sendedAt}</h6>
       </div>
     </div>
   );
@@ -43,10 +48,18 @@ const Message = ({ message }: { message: Message }): JSX.Element => {
 const GroupChat = (): JSX.Element => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
   const { theme } = useTheme();
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const chatListRef = React.useRef<HTMLDivElement | null>(null);
 
   useEventEmitter<boolean>(EventNames.OpenGroupChat, (isOpen) => {
     setIsDrawerOpen(isOpen);
   });
+
+  React.useEffect(() => {
+    if (chatListRef.current) {
+      chatListRef.current.scrollTop = chatListRef.current.scrollHeight;
+    }
+  }, [groupChats]);
 
   return (
     <div className={Style.groupChat}>
@@ -59,14 +72,14 @@ const GroupChat = (): JSX.Element => {
         ModalProps={{ BackdropProps: { invisible: true } }}
         PaperProps={{
           sx: {
-            width: 400,
+            width: isMobile ? "100%" : 400,
             height: "100%",
-            top: 75,
+            top: 60,
             right: 0,
             borderRadius: 2,
             position: "absolute",
             boxShadow: "none",
-            backgroundColor: theme === "light" ? "#fbfaff" : "#1E1F25",
+            backgroundColor: theme === "light" ? "white" : "#1E1F25",
           },
         }}
       >
@@ -106,7 +119,7 @@ const GroupChat = (): JSX.Element => {
               Group Chat
             </h6>
 
-            <div className={Style.chatList}>
+            <div className={Style.chatList} ref={chatListRef}>
               {groupChats.map((chat, index) => {
                 const isMe = chat.user === "me";
                 return (
@@ -126,7 +139,13 @@ const GroupChat = (): JSX.Element => {
 
             <div className={Style.sendMessageWrapper}>
               <div className={Style.messageInputField}>
-                <input type="text" placeholder="Write here..." />
+                <input
+                  type="text"
+                  placeholder="Write here..."
+                  style={{
+                    backgroundColor: theme === "light" ? "#F3F5F7" : "#282932",
+                  }}
+                />
               </div>
 
               <div className={Style.options}>
