@@ -5,7 +5,7 @@ import { Navbar, ProfileLayout } from "./layouts";
 
 const WrapNavBar = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex w-full h-full flex-row max-[550px]:flex-col">
+    <div className="flex w-[100vw] h-[100vh] flex-row max-[550px]:flex-col">
       <Navbar />
       <div>{children} </div>
     </div>
@@ -14,7 +14,7 @@ const WrapNavBar = ({ children }: { children: React.ReactNode }) => {
 
 function App() {
   return (
-    <div className="h-screen w-full">
+    <div className="h-[100%] w-[100%] m-0 overflow-hidden">
       <BrowserRouter>
         <ProfileLayout />
         <Routes>

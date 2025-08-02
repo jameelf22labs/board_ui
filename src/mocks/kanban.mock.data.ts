@@ -1,4 +1,4 @@
-import type { BoardTask } from "./types";
+import type { AggregatedTask, AggregatedTaskKey, BoardTask, TaskItem } from "./types";
 import Banner1 from "../assets/banner1.jpg";
 import Banner2 from "../assets/banner2.jpg";
 import Banner3 from "../assets/banner3.jpg";
@@ -187,7 +187,46 @@ const kanbanBoardMock: BoardTask = {
       members: ["Jaya"],
     },
   ],
-
 };
+
+export const aggregatedTask: Record<AggregatedTaskKey, AggregatedTask> = {
+  completedTask: {
+    count: 8,
+    lastWeek: 10,
+    lastMonths: [1, 2, 3, 5, 8, 10],
+  },
+
+  newTask: {
+    count: 10,
+    lastWeek: 10,
+    lastMonths: [1, 2, 3, 5, 8, 10],
+  },
+
+  done: {
+    count: 14,
+    lastWeek: 5,
+    lastMonths: [1, 2, 3, 5, 8, 10],
+  },
+};
+
+export const mockTasks: TaskItem[] = [
+  {
+    id: 1,
+    startTime: "9.00 am",
+    title: "Search Inspiration for project",
+    link: "https://www.uistore.com",
+    comments: 8,
+    completion: 24,
+  },
+  {
+    id: 2,
+    startTime: "11.00 am",
+    title: "Design wireframe for login",
+    link: "https://www.figma.com",
+    comments: 5,
+    completion: 60,
+  },
+];
+
 
 export default kanbanBoardMock;

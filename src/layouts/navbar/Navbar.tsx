@@ -35,7 +35,7 @@ const Navbar = (): JSX.Element => {
   };
 
   return (
-    <div className="h-full w-[94px] bg-[var(--side-bar-bg)] flex flex-col items-center justify-center gap-[30px] max-[550px]:w-full max-[550px]:flex-row max-[550px]:pb-5">
+    <div className="h-full w-[124px] bg-[var(--side-bar-bg)] flex flex-col items-center justify-center gap-[30px] max-[550px]:w-full max-[550px]:flex-row max-[550px]:pb-5">
       <div onClick={() => handleClick(NavOptions.DashBoard)}>
         <AppSVG />
       </div>

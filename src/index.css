@@ -8,6 +8,7 @@
   --bg-color: white;
   --text-color: black;
   --side-bar-bg: #fbfaff;
+  --bg-gray-white: #FFFFFF;
   --kanban-bg: #f3f4f8;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -45,9 +46,11 @@
 
 [data-theme="dark"] {
   --bg-color: #121212;
+  --bg-gray-white: "#1e1f25";
   --text-color: #ffffff;
   --side-bar-bg: #1e1f25;
   --kanban-bg: #131517;
+  --gray-black: #131517;
 }
 
 * {

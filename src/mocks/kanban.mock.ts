@@ -1,4 +1,5 @@
-import type { BoardTask, Task } from "./types";
+import { aggregatedTask } from "./kanban.mock.data";
+import type { AggregatedTaskKey, BoardTask, Task } from "./types";
 
 export type BoardStatus = keyof BoardTask;
 
@@ -26,5 +27,9 @@ export class KanbanMock {
       task.title.toLowerCase().includes(query.toLowerCase())
     );
     return Promise.resolve(results);
+  }
+
+  getAggregated(aggregateTaskKey: AggregatedTaskKey) {
+    return aggregatedTask[aggregateTaskKey];
   }
 }
