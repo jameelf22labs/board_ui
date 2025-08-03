@@ -9,7 +9,10 @@ const Dashbaord = (): JSX.Element => {
   return (
     <div
       className="flex  overflow-auto bg-[var(--kanban-bg)] h-[100vh] w-[100vw]"
-      style={{ padding: 30 , backgroundColor : theme === "light" ? "#f3f4f8" : "black" }}
+      style={{
+        padding: 30,
+        backgroundColor: theme === "light" ? "#f3f4f8" : "black",
+      }}
     >
       <div className="analytics-section h-full  w-[70%]">
         <TaskStatusAnalytics />

@@ -1,66 +1,81 @@
+import { useTheme } from "@/context/ThemeContext";
 import type { JSX } from "react";
-import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis  } from 'recharts'
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 const data = [
   {
-    "name": "Jane",
-    "uv": 4000,
-    "pv": 2400,
-    "amt": 2400
+    name: "Jane",
+    uv: 4000,
+    pv: 2400,
+    amt: 2400,
   },
   {
-    "name": "Feb",
-    "uv": 3000,
-    "pv": 1398,
-    "amt": 2210
+    name: "Feb",
+    uv: 3000,
+    pv: 1398,
+    amt: 2210,
   },
   {
-    "name": "March",
-    "uv": 2000,
-    "pv": 9800,
-    "amt": 2290
+    name: "March",
+    uv: 2000,
+    pv: 9800,
+    amt: 2290,
   },
   {
-    "name": "April",
-    "uv": 2780,
-    "pv": 3908,
-    "amt": 2000
+    name: "April",
+    uv: 2780,
+    pv: 3908,
+    amt: 2000,
   },
   {
-    "name": "May",
-    "uv": 1890,
-    "pv": 4800,
-    "amt": 2181
+    name: "May",
+    uv: 1890,
+    pv: 4800,
+    amt: 2181,
   },
   {
-    "name": "June",
-    "uv": 2390,
-    "pv": 3800,
-    "amt": 2500
+    name: "June",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500,
   },
   {
-    "name": "July",
-    "uv": 3490,
-    "pv": 4300,
-    "amt": 2100
-  }
-]
-
+    name: "July",
+    uv: 3490,
+    pv: 4300,
+    amt: 2100,
+  },
+];
 
 const TaskDoneAnalytics = (): JSX.Element => {
+  const { theme } = useTheme();
   return (
     <div
       className="flex flex-col gap-3 p-5 w-full  bg-[var(--bg-color)]"
-      style={{ padding: 20, marginTop: 30 }}
+      style={{
+        padding: 20,
+        marginTop: 30,
+        backgroundColor: theme === "light" ? "#FFFFFF" : "#1E1F25",
+      }}
     >
-      <div className="flex justify-between">
-        <h6 className="font-bold text-[24px] text-[#232360]"> Task Done </h6>
-        <div className="flex gap-15 font-medium text-[18px] text-[#232360]">
+      <div
+        className="flex justify-between"
+        style={{ color: theme === "light" ? "#232360" : "#FAFAFA" }}
+      >
+        <h6 className="font-bold text-[24px] "> Task Done </h6>
+        <div className="flex gap-15 font-medium text-[18px]">
           <h6> Daily </h6>
           <h6> Weekly </h6>
           <h6 className="underline text-[#1EA7FF]"> Monthly </h6>
         </div>
-      </div>    
+      </div>
       <AreaChart
         width={1230}
         height={250}

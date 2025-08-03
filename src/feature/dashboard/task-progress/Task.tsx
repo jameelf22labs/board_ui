@@ -6,14 +6,23 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { LuAlarmClock } from "react-icons/lu";
 import { Slider } from "@mui/material";
 import type { TaskItem } from "@/mocks/types";
+import { useTheme } from "@/context/ThemeContext";
 
 const Task = ({ task }: { task: TaskItem }): JSX.Element => {
+  const { theme } = useTheme();
+
   return (
     <div
       className="flex items-center w-full bg-white h-[85px] rounded-xl shadow-sm px-4"
-      style={{ marginTop: 30 }}
+      style={{
+        marginTop: 30,
+        backgroundColor: theme === "light" ? "#FFFFFF" : "#1E1F25",
+      }}
     >
-      <div className="flex justify-center items-center bg-[#FBFAFF] h-full w-[230px] px-5 gap-5 rounded-xl">
+      <div
+        className="flex justify-center items-center bg-[#FBFAFF] h-full w-[230px] px-5 gap-5 rounded-xl"
+        style={{ backgroundColor: theme === "light" ? "#fbfaff" : "#212229" }}
+      >
         <div className="h-[35px] w-[35px] rounded-full flex items-center justify-center bg-[#5051F9] text-white">
           <FaPlay size={12} />
         </div>
