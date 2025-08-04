@@ -10,7 +10,7 @@ import useEventEmitter from "@/hooks/useEventEmitter";
 
 const Dashboard = (): JSX.Element => {
   const { theme } = useTheme();
-  const [isOpenDrawer, setIsOpenDrawer] = React.useState<boolean>(false);
+  const [isOpenDrawer, setIsOpenDrawer] = React.useState<boolean>(true);
 
   useEventEmitter<boolean>(EventNames.OpenTaskSchedule, (canOpen) => {
     setIsOpenDrawer(canOpen);
