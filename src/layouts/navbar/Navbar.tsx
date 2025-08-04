@@ -8,6 +8,7 @@ import useEventEmitter from "../../hooks/useEventEmitter";
 import { EventNames } from "../../core/events/event.constant";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ScheduleOutlined } from "@mui/icons-material";
 
 enum NavOptions {
   DashBoard = "Dashboard",
@@ -15,10 +16,12 @@ enum NavOptions {
   Kanban = "Kanban",
   Message = "Message",
   Folder = "Folder",
+  Schedule = "Schedule",
 }
 
 const Navbar = (): JSX.Element => {
   const publish = useEventEmitter<boolean>(EventNames.OpenGroupChat);
+  const publishSchedule = useEventEmitter<boolean>(EventNames.OpenTaskSchedule);
   const [active, setActive] = React.useState<NavOptions>(NavOptions.DashBoard);
   const navigate = useNavigate();
   const handleClick = (option: NavOptions) => {
@@ -55,6 +58,14 @@ const Navbar = (): JSX.Element => {
       </div>
       <div onClick={() => handleClick(NavOptions.Folder)}>
         <FolderSVG />
+      </div>
+      <div
+        onClick={() => {
+          publishSchedule(true);
+          handleClick(NavOptions.Schedule);
+        }}
+      >
+        <ScheduleOutlined style={{ color: "#5F6388", width: 30, height: 30 }} />
       </div>
     </div>
   );

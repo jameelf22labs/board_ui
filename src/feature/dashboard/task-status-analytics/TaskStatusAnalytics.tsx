@@ -28,10 +28,10 @@ const TaskStatusAnalytics = () => {
   };
 
   const mapColor = {
-    completedTask : "#5051F9",
-    newTask : "#1EA7FF",
-    done : "#FF614C"
-  }
+    completedTask: "#5051F9",
+    newTask: "#1EA7FF",
+    done: "#FF614C",
+  };
 
   return (
     <div className="flex gap-[40px] items-center w-full">
@@ -42,11 +42,19 @@ const TaskStatusAnalytics = () => {
         return (
           <div
             key={status}
-            style={{ padding: 20 , backgroundColor : theme === "light" ? "#FFFFFF" : "#1E1F25"  }}
+            style={{
+              padding: 20,
+              backgroundColor: theme === "light" ? "#FFFFFF" : "#1E1F25",
+            }}
             className="w-[424px] h-[210px] rounded-[16px] p-5 flex flex-col justify-between shadow"
           >
             <div className="flex justify-around items-center gap-2">
-              <div style={{ backgroundColor : theme === "light" ? "#F3F7FD" : "#282932" }} className="w-[44px] h-[44px] bg-[#F3F7FD] text-[#8D98A9] rounded-3xl flex items-center justify-center text-2xl">
+              <div
+                style={{
+                  backgroundColor: theme === "light" ? "#F3F7FD" : "#282932",
+                }}
+                className="w-[44px] h-[44px] bg-[#F3F7FD] text-[#8D98A9] rounded-3xl flex items-center justify-center text-2xl"
+              >
                 <CiStar />
               </div>
               <h3 className="font-medium text-[20px] text-[#8C97A8]">
@@ -77,12 +85,11 @@ const TaskStatusAnalytics = () => {
                 ]}
                 series={[
                   {
-                    data: [2, 5.5, 2, 8.5, 1.5, 5, ],
-                    color: mapColor[status]
+                    data: [2, 5.5, 2, 8.5, 1.5, 5],
+                    color: mapColor[status],
                   },
                 ]}
                 height={150}
-                
                 width={200}
               />
 
