@@ -191,7 +191,7 @@ const kanbanBoardMock: BoardTask = {
 
 export const aggregatedTask: Record<AggregatedTaskKey, AggregatedTask> = {
   completedTask: {
-    count: 8,
+    count: 80,
     lastWeek: 10,
     lastMonths: [1, 2, 3, 5, 8, 10],
   },
@@ -227,6 +227,17 @@ export const mockTasks: TaskItem[] = [
     completion: 60,
   },
 ];
+
+export const monthlyTaskReport = [
+  { name: "Jane", uv: 4000, pv: 2400, amt: 2400 },
+  { name: "Feb", uv: 3000, pv: 1398, amt: 2210 },
+  { name: "March", uv: 2000, pv: 9800, amt: 2290 },
+  { name: "April", uv: 2780, pv: 3908, amt: 2000 },
+  { name: "May", uv: 1890, pv: 4800, amt: 2181 },
+  { name: "June", uv: 2390, pv: 3800, amt: 2500 },
+  { name: "July", uv: 3490, pv: 4300, amt: 2100 },
+];
+
 
 
 export default kanbanBoardMock;

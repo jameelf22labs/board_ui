@@ -8,7 +8,7 @@
   --bg-color: white;
   --text-color: black;
   --side-bar-bg: #fbfaff;
-  --bg-gray-white: #FFFFFF;
+  --bg-gray-white: #ffffff;
   --kanban-bg: #f3f4f8;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -67,8 +67,8 @@ html,
 body {
   height: 100%;
   width: 100%;
-  /* margin: 0; */
-  /* overflow: hidden; */
+  margin: 0;
+  overflow: hidden;
   background-color: var(--bg-color);
   color: var(--text-color);
 }

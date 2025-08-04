@@ -33,7 +33,7 @@ const TaskStatusAnalytics = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-5 w-full justify-center">
+    <div className="flex flex-wrap gap-5 w-full">
       {taskStatus.map((status) => {
         const taskStatusData = mockInstance.getAggregated(
           status as AggregatedTaskKey
@@ -42,7 +42,7 @@ const TaskStatusAnalytics = () => {
         return (
           <div
             key={status}
-            className="flex flex-col justify-between rounded-2xl shadow w-full sm:w-[90%] md:w-[48%] lg:w-[32%] xl:w-[32%] min-w-[280px]"
+            className="flex flex-col justify-between rounded-2xl shadow w-full sm:w-[90%] md:w-[48%] lg:w-[28%] xl:w-[32%] min-w-[274px]"
             style={{
               backgroundColor: theme === "light" ? "#FFFFFF" : "#1E1F25",
               padding: "calc(var(--spacing) * 5)",
@@ -58,13 +58,15 @@ const TaskStatusAnalytics = () => {
               >
                 <CiStar />
               </div>
-              <h3 className="font-medium text-base text-[#8C97A8]">
+              <h3 className="font-medium text-xl text-[#8C97A8]">
                 {mapStatus(status)}
               </h3>
-              <h3 className="font-bold text-xl text-[#768396]">
+              <h3 className="font-bold text-2xl text-black">
                 {taskStatusData.count}
               </h3>
             </div>
+
+            <hr style={{ marginTop: 20 }} />
 
             <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="w-full sm:w-[60%] h-[120px]">
@@ -95,7 +97,7 @@ const TaskStatusAnalytics = () => {
                   height={120}
                 />
               </div>
-              <div className="text-center sm:text-left text-sm text-[#768396]">
+              <div className="text-center sm:text-left text-lg text-[#768396]">
                 <span className="text-[#73bb5a] font-medium">
                   {taskStatusData.lastWeek} +{" "}
                 </span>
