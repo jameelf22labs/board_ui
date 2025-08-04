@@ -3,6 +3,7 @@ import TaskStatusAnalytics from "./task-status-analytics/TaskStatusAnalytics";
 import TaskDoneAnalytics from "./task-done-analytics/TaskDoneAnalytics";
 import TaskProgress from "./task-progress/TaskProgress";
 import { useTheme } from "@/context/ThemeContext";
+import Schedule from "./schedules/Schedule";
 
 const Dashbaord = (): JSX.Element => {
   const { theme } = useTheme();
@@ -19,7 +20,9 @@ const Dashbaord = (): JSX.Element => {
         <TaskDoneAnalytics />
         <TaskProgress />
       </div>
-      <div className="schedule-section  h-full w-[30%]"></div>
+      <div className="schedule-section  h-full w-[30%]" style={{marginLeft : 20}}>
+        <Schedule />
+      </div>
     </div>
   );
 };

@@ -76,6 +76,7 @@ const TaskDoneAnalytics = (): JSX.Element => {
           <h6 className="underline text-[#1EA7FF]"> Monthly </h6>
         </div>
       </div>
+
       <AreaChart
         width={1230}
         height={250}
