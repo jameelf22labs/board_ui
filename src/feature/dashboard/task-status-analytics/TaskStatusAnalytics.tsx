@@ -9,7 +9,6 @@ import { useTheme } from "@/context/ThemeContext";
 const TaskStatusAnalytics = () => {
   const mockInstance = React.useMemo(() => MockFactory.createKanban(), []);
   const [taskStatus, setTaskStatus] = React.useState<AggregatedTaskKey[]>([]);
-
   const { theme } = useTheme();
 
   React.useEffect(() => {
@@ -34,74 +33,73 @@ const TaskStatusAnalytics = () => {
   };
 
   return (
-    <div className="flex gap-[40px] items-center w-full">
+    <div className="flex flex-wrap gap-5 w-full justify-center">
       {taskStatus.map((status) => {
         const taskStatusData = mockInstance.getAggregated(
           status as AggregatedTaskKey
         );
+
         return (
           <div
             key={status}
+            className="flex flex-col justify-between rounded-2xl shadow w-full sm:w-[90%] md:w-[48%] lg:w-[32%] xl:w-[32%] min-w-[280px]"
             style={{
-              padding: 20,
               backgroundColor: theme === "light" ? "#FFFFFF" : "#1E1F25",
+              padding: "calc(var(--spacing) * 5)",
             }}
-            className="w-[424px] h-[210px] rounded-[16px] p-5 flex flex-col justify-between shadow"
           >
-            <div className="flex justify-around items-center gap-2">
+            <div className="flex justify-between items-center gap-3">
               <div
+                className="w-11 h-11 rounded-full flex items-center justify-center text-2xl"
                 style={{
                   backgroundColor: theme === "light" ? "#F3F7FD" : "#282932",
+                  color: "#8D98A9",
                 }}
-                className="w-[44px] h-[44px] bg-[#F3F7FD] text-[#8D98A9] rounded-3xl flex items-center justify-center text-2xl"
               >
                 <CiStar />
               </div>
-              <h3 className="font-medium text-[20px] text-[#8C97A8]">
+              <h3 className="font-medium text-base text-[#8C97A8]">
                 {mapStatus(status)}
               </h3>
-              <h3 className="font-bold text-[29px] text-[#768396]">
+              <h3 className="font-bold text-xl text-[#768396]">
                 {taskStatusData.count}
               </h3>
             </div>
-            <div className="mt-2 p-0 flex justify-between items-center">
-              <LineChart
-                xAxis={[
-                  {
-                    data: taskStatusData.lastMonths,
-                    disableLine: true,
-                    disableTicks: true,
-                    label: "",
-                    valueFormatter: () => "",
-                  },
-                ]}
-                yAxis={[
-                  {
-                    disableLine: true,
-                    disableTicks: true,
-                    label: "",
-                    valueFormatter: () => "",
-                  },
-                ]}
-                series={[
-                  {
-                    data: [2, 5.5, 2, 8.5, 1.5, 5],
-                    color: mapColor[status],
-                  },
-                ]}
-                height={150}
-                width={200}
-              />
 
-              <div>
-                <h6 className="text-[#768396]">
-                  {" "}
-                  <span className="text-[#73bb5a]">
-                    {" "}
-                    {taskStatusData.lastWeek} +{" "}
-                  </span>{" "}
-                  more <br /> from last week{" "}
-                </h6>
+            <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="w-full sm:w-[60%] h-[120px]">
+                <LineChart
+                  xAxis={[
+                    {
+                      data: taskStatusData.lastMonths,
+                      disableLine: true,
+                      disableTicks: true,
+                      label: "",
+                      valueFormatter: () => "",
+                    },
+                  ]}
+                  yAxis={[
+                    {
+                      disableLine: true,
+                      disableTicks: true,
+                      label: "",
+                      valueFormatter: () => "",
+                    },
+                  ]}
+                  series={[
+                    {
+                      data: [2, 5.5, 2, 8.5, 1.5, 5],
+                      color: mapColor[status],
+                    },
+                  ]}
+                  height={120}
+                />
+              </div>
+              <div className="text-center sm:text-left text-sm text-[#768396]">
+                <span className="text-[#73bb5a] font-medium">
+                  {taskStatusData.lastWeek} +{" "}
+                </span>
+                more <br /> from last week
               </div>
             </div>
           </div>

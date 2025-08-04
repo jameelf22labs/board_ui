@@ -22,7 +22,7 @@ const Dashboard = (): JSX.Element => {
       style={{
         backgroundColor: theme === "light" ? "#f3f4f8" : "black",
         justifyContent: isOpenDrawer ? "flex-start" : "center",
-        padding: 30
+        padding: 30,
       }}
     >
       <div className="analytics-section flex flex-col gap-5 w-full md:w-[70%]">
