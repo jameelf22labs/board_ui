@@ -83,7 +83,9 @@ const Navbar = (): JSX.Element => {
           title={title}
           role="button"
           onClick={() => {
-            handleClick(option);
+            if ([NavOptions.DashBoard, NavOptions.Kanban].includes(option)) {
+              handleClick(option);
+            }
             onClick?.();
           }}
           className={clsx(

@@ -58,7 +58,7 @@ const Schedule = ({ isOpenDrawer, setIsOpenDrawer }: ScheduleProps) => {
           backgroundColor: theme === "light" ? "#FFFFFF" : "#1E1F25",
         }}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between text-[var(--text-color)]">
           <h6 className="font-bold text-[23px]"> Today’s Scheudle </h6>
           <div
             className="bg-[#F4F4F4] rounded-2xl"
@@ -75,7 +75,7 @@ const Schedule = ({ isOpenDrawer, setIsOpenDrawer }: ScheduleProps) => {
         >
           <div>
             <h6 className="text-[#1EA7FF]"> 30 minute call with Client </h6>
-            <h6 className="tex-[#232360] text-[21px]">
+            <h6 className="text-[var(--text-color)] text-[21px]">
               {" "}
               Project Discovery Call{" "}
             </h6>
@@ -84,7 +84,7 @@ const Schedule = ({ isOpenDrawer, setIsOpenDrawer }: ScheduleProps) => {
         </div>
 
         <div
-          className="flex items-center justify-between bg-[#5E5BF8] text-white rounded-xl w-full gap-4"
+          className="flex items-center justify-between bg-[#5E5BF8] text-[var(--text-color)] rounded-xl w-full gap-4"
           style={{ padding: 20, marginTop: 30 }}
         >
           <div className="flex -space-x-3">
@@ -110,7 +110,7 @@ const Schedule = ({ isOpenDrawer, setIsOpenDrawer }: ScheduleProps) => {
 
           <div className="text-sm font-medium">28:35</div>
 
-          <div className="flex items-center gap-3 text-white">
+          <div className="flex items-center gap-3 text-[var(--text-color)]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 h-5"
@@ -155,10 +155,10 @@ const Schedule = ({ isOpenDrawer, setIsOpenDrawer }: ScheduleProps) => {
                   />
                 </div>
                 <div className="flex flex-col text-[21px]">
-                  <span className="text-[#232360] font-semibold leading-tight">
+                  <span className="text-[var(--text-color)] font-semibold leading-tight">
                     {msg.name}
                   </span>
-                  <span className="text-[#6B6F76] text-sm truncate max-w-[180px]">
+                  <span className="text-[var(--text-color)] text-sm truncate max-w-[180px]">
                     {msg.message}
                   </span>
                 </div>

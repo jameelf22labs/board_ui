@@ -30,7 +30,7 @@ const NewTask = (): JSX.Element => {
         <div className="text-gray-400 text-xl">⋮</div>
       </div>
 
-      <label className="text-[18px] text-[#6B6F76] mb-1 block">
+      <label className="text-[18px] text-[var(--text-color)] mb-1 block">
         Task Title
       </label>
       <input
@@ -57,7 +57,7 @@ const NewTask = (): JSX.Element => {
         <span className="cursor-pointer">{`>`}</span>
       </div>
 
-      <label className="text-[16px] text-[#6B6F76] mb-1 block">
+      <label className="text-[16px] text-[var(--text-color)] mb-1 block">
         Add Collaborators
       </label>
       <div
