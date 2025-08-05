@@ -1,12 +1,14 @@
 .homeRoot {
   width: 100vw;
   height: 100vh;
+  
 }
 
 .contentWrapper {
   display: flex;
   width: 100%;
   height: 100%;
+
 }
 
 @media (max-width: 550px) {

@@ -21,3 +21,21 @@ export type Message = {
   sendedAt: string;
   avatar: string;
 };
+
+export type AggregatedTask = {
+  count: number;
+  lastWeek: number;
+  lastMonths: number[];
+};
+
+export type TaskItem = {
+  id: number;
+  startTime: string;
+  title: string;
+  link: string;
+  comments: number;
+  completion: number;
+};
+
+export type AggregatedTaskKey = 'completedTask' | 'newTask' | 'done';
+

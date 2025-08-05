@@ -4,8 +4,7 @@ import Style from "./Kanban.module.css";
 import { Avatar, AvatarGroup } from "@mui/material";
 import { MoreHoriz } from "@mui/icons-material";
 import { BiPlusCircle } from "react-icons/bi";
-import kanbanBoardMock from "../../../../mocks/kanban.mock.data";
-import { KanbanMock, type BoardStatus } from "../../../../mocks/kanban.mock";
+import { type BoardStatus } from "../../../../mocks/kanban.mock";
 import type { Task } from "../../../../mocks/types";
 import { getRandomColor } from "../../../../utils/common.utils";
 import useEventEmitter from "../../../../hooks/useEventEmitter";
@@ -26,7 +25,7 @@ const TaskCard = ({ task }: { task: Task }): JSX.Element => {
     >
       <h6
         className={Style.category}
-        style={{ backgroundColor: getRandomColor() }}
+        style={{ backgroundColor: getRandomColor(), padding: "16 8 16 8" }}
       >
         {task.category}
       </h6>

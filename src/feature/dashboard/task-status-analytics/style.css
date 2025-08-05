@@ -1,0 +1,12 @@
+.MuiCardContent-root
+.MuiChartsAxis-root
+  .MuiChartsAxis-directionX
+  .MuiChartsAxis-bottom
+  .MuiChartsAxis-id-defaultized-x-axis-0
+  .css-1yscjcf-MuiChartsAxis-root-MuiChartsXAxis-root {
+    display: none;
+} 
+
+circle {
+  display: none;
+}
